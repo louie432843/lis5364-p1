@@ -1,5 +1,6 @@
 <?php // Get the product data
-
+ini_set('error_reporting', E_ALL|E_STRICT);
+ini_set('display_errors', 1);
 $product_id = $_POST['product_id'];
 $category_id = $_POST['category_id'];
 $code = $_POST['code'];
@@ -10,9 +11,11 @@ $price = $_POST['price'];
 
 require('global/database.php');
 $query = 'SELECT *
-          FROM categories
-          ORDER BY categoryID';
-$categories = $db->query($query);
+          FROM products
+          WHERE productID = ' . $product_id;
+ 
+$products = $db->query($query);
+$product = $products->fetch();
 
 
 
@@ -39,6 +42,10 @@ $categories = $db->query($query);
             <form action="edit_product.php" method="post"
                   id="edit_product_form">
 
+               <input type="hidden" name="product_id" value="<?php echo $product_id['productID'];?>"/>
+               <br />
+
+<!--
                 <label>Category:</label>
                 <select name="category_id">
                 <?php foreach ($categories as $category) : ?>
@@ -47,6 +54,10 @@ $categories = $db->query($query);
                     </option>
                 <?php endforeach; ?>
                 </select>
+-->
+
+				<label>Category: </label>
+				<input type="input" name="category" value="<?php echo $category_id ;?>" />
                 <br />
 
  <label>Code:</label>

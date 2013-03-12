@@ -1,7 +1,7 @@
 <?php
 // show errors, comment out when done testing:
+ini_set('error_reporting', E_ALL|E_STRICT);
 ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
   //make sure file is only required once, 
   //fail causes error that stops remainder of page from processing

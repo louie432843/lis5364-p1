@@ -1,7 +1,7 @@
 <?php
 // Get the product data
 $product_id = $_POST['product_id'];
-$category_id = $_POST['category_id'];
+$category_id = $_POST['category'];
 $code = $_POST['code'];
 $name = $_POST['name'];
 $price = $_POST['price'];
@@ -14,10 +14,11 @@ if (empty($code) || empty($name) || empty($price) ) {
     // If valid, edit the product
     require_once('global/database.php');
     $query = "UPDATE products
-    		  WHERE productID = '$product_id'
-                 (categoryID, productCode, productName, listPrice)
-              VALUES
-                 ('$category_id', '$code', '$name', '$price')";
+          SET categoryID = '$category_id',
+              productCode = '$code',
+              productName = '$name',
+              listPrice = '$price'
+          WHERE productID = $product_id";
                  
     $db->exec($query);
 
