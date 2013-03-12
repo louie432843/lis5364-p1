@@ -39,9 +39,6 @@ $categories = $db->query($query);
             <form action="edit_product.php" method="post"
                   id="edit_product_form">
 
-               <input type="hidden" name="product_id" value="<?php echo $product_id['productID'];?>"/>
-               <br />
-
                 <label>Category:</label>
                 <select name="category_id">
                 <?php foreach ($categories as $category) : ?>

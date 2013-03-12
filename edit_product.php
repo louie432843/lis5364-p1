@@ -14,11 +14,10 @@ if (empty($code) || empty($name) || empty($price) ) {
     // If valid, edit the product
     require_once('global/database.php');
     $query = "UPDATE products
-          SET categoryID = '$category_id',
-              productCode = '$code',
-              productName = '$name',
-              listPrice = '$price'
-          WHERE productID = $product_id";
+    		  WHERE productID = '$product_id'
+                 (categoryID, productCode, productName, listPrice)
+              VALUES
+                 ('$category_id', '$code', '$name', '$price')";
                  
     $db->exec($query);
 
